@@ -3,16 +3,9 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {useCookies} from "react-cookie";
 import {useGetUserID} from "../hooks/useGetUserId.ts";
+import {IRecipe} from "../types/recipe.type.ts";
 
-interface IRecipe {
-  name: string
-  description: string
-  ingredients: string[],
-  instructions: string,
-  imageUrl?: string,
-  cookingTime: number,
-  userOwner: string | null,
-}
+
 
 export const CreateRecipe = () => {
   const userID = useGetUserID();
