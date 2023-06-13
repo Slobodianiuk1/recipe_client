@@ -1,11 +1,11 @@
 import  {FC, useEffect, useState} from "react";
 import axios from "axios";
 import {useGetUserID} from "../hooks/useGetUserId.ts";
-import {IRecipeHome} from "../types/recipe.type.ts";
+import {IRecipeAll} from "../types/recipe.type.ts";
 
 const Home: FC = () => {
 
-  const [recipes, setRecipes] = useState<IRecipeHome[]>([]);
+  const [recipes, setRecipes] = useState<IRecipeAll[]>([]);
   const [savedRecipes, setSavedRecipes] = useState<string[]>([]);
 
   const userID = useGetUserID();
@@ -13,7 +13,7 @@ const Home: FC = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await axios.get<IRecipeHome[]>("http://localhost:4200/recipes");
+        const response = await axios.get<IRecipeAll[]>("http://localhost:4200/recipes");
         setRecipes(response.data);
       } catch (err) {
         console.log(err);
@@ -59,7 +59,7 @@ const Home: FC = () => {
             <div>
               <h2>{recipe.name}</h2>
               <button
-                className="btn"
+                className={isRecipeSaved(recipe._id) ? 'btnDis' : 'btn'}
                 onClick={() => saveRecipe(recipe._id)}
                 disabled={isRecipeSaved(recipe._id)}
               >

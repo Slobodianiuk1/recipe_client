@@ -10,9 +10,13 @@ export interface IRecipe {
 
 
 
-export interface IRecipeHome extends IRecipe{
+export interface IRecipeAll extends IRecipe{
  __v: number
   _id: string
 }
 
+
+export interface ISavedRecipes {
+  savedRecipes: IRecipeAll[]
+}
 

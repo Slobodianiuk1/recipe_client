@@ -20,3 +20,8 @@ h2 {
 .btn {
     @apply px-1 py-2 bg-blue-900 text-white rounded-md w-[150px]
 }
+
+
+.btnDis {
+    @apply px-1 py-2 bg-gray-600 text-white rounded-md w-[150px]
+}
