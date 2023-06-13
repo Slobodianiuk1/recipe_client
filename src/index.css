@@ -16,3 +16,7 @@ h2 {
     @apply text-center text-3xl mb-7
 }
 
+
+.btn {
+    @apply px-1 py-2 bg-blue-900 text-white rounded-md w-[150px]
+}

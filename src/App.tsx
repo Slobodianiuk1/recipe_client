@@ -4,7 +4,7 @@ import SavedRecipes from "./pages/SavedRecipes.tsx";
 import Auth from "./pages/Auth.tsx";
 import {FC} from "react";
 import Header from "./components/Header.tsx";
-import CreateRecipe from "./pages/CreateRecipe.tsx";
+import {CreateRecipe} from "./pages/CreateRecipe.tsx";
 import Login from "./components/Login.tsx";
 import Register from "./components/Register.tsx";
 
