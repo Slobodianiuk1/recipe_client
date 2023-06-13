@@ -1,7 +1,10 @@
+import Register from "../components/Register.tsx";
+
 const Auth = () => {
   return (
-    <div>
-      Auth
+    <div className="flex justify-center pt-10">
+      {/*<Login/>*/}
+      <Register/>
     </div>
   );
 };

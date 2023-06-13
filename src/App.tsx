@@ -9,7 +9,7 @@ import CreateRecipe from "./pages/CreateRecipe.tsx";
 const App: FC = () => {
 
   return (
-    <div>
+    <div className="bg-gray-300 h-screen">
       <Router>
         <Header/>
         <Routes>
