@@ -3,6 +3,8 @@ import * as yup from "yup";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import axios from "axios";
+import {TUser} from "../types/user.type.ts";
+import {useNavigate} from "react-router-dom";
 
 
 export const schema = yup.object({
@@ -18,6 +20,8 @@ export const schema = yup.object({
 }).required("Please fill in all fields");
 
 const Register: FC = () => {
+  const navigate = useNavigate();
+
   const {register, handleSubmit, reset, formState: {errors}} = useForm<FormData>({
     resolver: yupResolver(schema),
   });
@@ -25,14 +29,14 @@ const Register: FC = () => {
 
 
   const registerUser = async (data: FormData) => {
-    console.log(data);
     try {
-      await axios.post('http://localhost:4200/auth/register', {...data})
+      await axios.post<TUser>('http://localhost:4200/auth/register', {...data})
       alert('Registration completed! Naw login.')
     } catch (error) {
       console.error(error)
     }
     reset()
+    navigate("/auth/login")
   };
 
 
@@ -42,13 +46,13 @@ const Register: FC = () => {
       <form className="flex flex-col gap-4 justify-center items-center" onSubmit={handleSubmit(registerUser)}>
         <div className="flex flex-col">
           <label htmlFor="username">Username:</label>
-          <input type="text" id='username' {...register('username')}/>
+          <input type="text" id='username'  {...register('username')}/>
           {errors.username && <span>{errors.username.message}</span>}
         </div>
 
         <div className="flex flex-col">
           <label htmlFor="password">Password:</label>
-          <input type="password" id='password' {...register('password')}/>
+          <input type="password" id='password' autoComplete={'off'} {...register('password')} />
           {errors.password && <span>{errors.password.message}</span>}
         </div>
         <button type='submit' className="px-4 py-1 bg-green-700 rounded w-[150px] text-white">register</button>
